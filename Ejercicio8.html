@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 8</title>
+
+    
+</head>
+<body>
+    <h2>Resumen Estadistico</h2>
+    <p id="Promedio"></p>
+    <p id="Mediana"></p>
+    <p id="Minimo"></p>
+    <p id="Maximo"></p>
+    <p id="Desviacion estandar"></p>
+
+    <script>
+        let numeros = []
+        let entrada;
+
+        do{
+            entrada = prompt("Ingrese un numero (O deje un vacio para finalizar):")
+            if(entrada != "" && entrada != null){
+                numeros.push(Number(entrada));
+            }
+        } while (entrada != "" && entrada != null)
+
+        if(numeros.length == 0){
+            alert("No se ingresaron numeros.")
+        } else {
+            //ORDENO LOS NUMEROS PARA FACILIDAD DE MANIPULACION
+            numeros.sort(function(a, b) { return a - b; });
+
+            //CALCULO LAS ESTADISTICAS
+            let n = numeros.length;
+            let suma = numeros.reduce(function(a, b) { return a + b});
+            let promedio = suma / n;
+
+            //LA NOTACION "..." SIRVE PARA EXPANDIR EL ARREGLO EN VALORES INDIVIDUALES
+            let minimo = Math.min(...numeros); 
+            let maximo = Math.max(...numeros);
+
+            //MEDIANA
+            let mediana;
+
+            if(n % 2 == 0){
+                mediana = (numeros[n/2 - 1] + numeros[n / 2]) / 2;
+            } else {
+                mediana = numeros[parseInt(n/2)]
+            }
+
+            //DESVIACION ESTANDAR
+            let sumatoriaCuadrados = numeros.reduce((acc, val) => acc + Math.pow(val - promedio, 2), 0);
+            let desviacionEstandar = Math.sqrt(sumatoriaCuadrados / n);
+
+            document.getElementById("Promedio").textContent = "Promedio: " + promedio; 
+            document.getElementById("Mediana").textContent = "Mediana: " + mediana; 
+            document.getElementById("Minimo").textContent = "Minimo: " + minimo; 
+            document.getElementById("Maximo").textContent = "Maximo: " + maximo; 
+            document.getElementById("Desviacion estandar").textContent = "Desviacion estandar: " + desviacionEstandar; 
+        }
+    </script>
+</body>
+</html>

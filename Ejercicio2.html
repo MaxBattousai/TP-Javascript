@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 2</title>
+</head>
+<body>
+    <script>
+        let base = Number(prompt("Base del Rectangulo"));
+        let altura = Number(prompt("Altura del Rectangulo"));
+
+        let rectangulo = "";
+
+        for(let i = 0; i<altura; i++){
+            for(let j = 0; j<base; j++){
+                rectangulo += "*";
+            }
+            rectangulo += "\n";
+        }
+
+        alert("Rectangulo resultante:\n" + rectangulo);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 5</title>
+</head>
+<body>
+    <script>
+        let aleatorio = parseInt((Math.random() * 1000000)) + 1;
+        console.log(aleatorio);
+        let valor = Number(prompt("Ingrese un numero del 1 a 1.000.000: "));
+        let contador = 1;
+
+        while (valor != aleatorio){
+            if (valor > aleatorio){
+                valor = prompt("El numero es Menor. Intenta otra vez.\nUltimo valor: " + valor);
+            }else if (valor < aleatorio){
+                valor = prompt("El numero es Mayor. Intenta otra vez.\nUltimo valor: " + valor);
+            }
+            contador++;
+        }
+
+        alert("ACERTASTE!! El numero es: "+ aleatorio + "\nNumero de intentos: "+ contador);
+    </script>
+</body>
+</html>
