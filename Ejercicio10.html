@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let entrada = "";
+
+        do{
+            entrada = prompt("Ingrese una fecha con formato DD-MM-YYYY");
+
+            if(entrada.match(/^\d{1,2}-\d{1,2}-\d{4}/) == null){
+                alert("ALGO FUE MAL INGRESADO: Recuerde que el formato de fecha es DD-MM-YYYY");
+            }
+        }while(entrada.match(/^\d{1,2}-\d{1,2}-\d{4}/) == null);
+
+        let hoy = new Date();
+
+        //ESTO ES PARA CREAR LA FECHA CORRECTAMENTE COMO DATE
+        
+        let fecha = new Date()
+        console.log(fecha)
+
+        if(fecha > hoy){
+            let res = fecha.getDate() + (fecha.getMonth() + 1 ) * 30 + fecha.getFullYear() * 365
+            - hoy.getDate() + (hoy.getMonth() + 1) * 30 + hoy.getFullYear() * 365;
+
+            console.log(res);
+
+        } else if (fecha < hoy){
+            let res = hoy.getDate() + (hoy.getMonth() + 1) * 30 + hoy.getFullYear() * 365
+            - fecha.getDate() + (fecha.getMonth() + 1) * 30 + fecha.getFullYear() * 365;
+
+            console.log(res);
+        }
+    </script>
+</body>
+</html>

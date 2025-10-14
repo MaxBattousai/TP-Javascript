@@ -7,11 +7,14 @@
 </head>
 <body>
     <script>
+        //GENERO EL NUMERO ALEATORIO
         let aleatorio = parseInt((Math.random() * 1000000)) + 1;
         console.log(aleatorio);
+        //SI EL USUARIO ACIERTA A LA PRIMERA NO ENTRA AL WHILE, POR LO QUE EL CONTADOR COMIENZA EN 1
         let valor = Number(prompt("Ingrese un numero del 1 a 1.000.000: "));
         let contador = 1;
 
+        //SE REPITE HASTA ENCONTRAR EL NUMERO ALEATORIO
         while (valor != aleatorio){
             if (valor > aleatorio){
                 valor = prompt("El numero es Menor. Intenta otra vez.\nUltimo valor: " + valor);
@@ -21,6 +24,7 @@
             contador++;
         }
 
+        //MUSTRA POR PANTALLA
         alert("ACERTASTE!! El numero es: "+ aleatorio + "\nNumero de intentos: "+ contador);
     </script>
 </body>
