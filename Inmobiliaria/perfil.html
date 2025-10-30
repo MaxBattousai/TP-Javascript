@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mostrar">
+
+    </div>
+
+    <script>
+        cargarPerfil();
+        async function cargarPerfil(){
+            const elemento = document.getElementById("mostrar");
+            const token = localStorage.getItem("token");
+            const response = await fetch('https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/api/Propietarios', {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token}
+            });
+
+            if (response.ok){
+                const propietario = await response.json();
+                elemento.innerHTML = "<p>Nombre:" + propietario.nombre + "</p>"
+            }
+        }
+    </script>
+</body>
+</html>

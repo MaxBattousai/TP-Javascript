@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmobiliaria</title>
+</head>
+<body>
+    <form action="" id="formulario">
+        <label for="Usuario">Usuario</label>
+        <input type="text" id="Usuario" name="Usuario">
+
+        <label for="Clave">Clave</label>
+        <input type="text" id="Clave" name="Clave">
+
+        <button type="button">Iniciar Sesión</button>
+        <p id="respuesta"></p>
+    </form>
+
+    <script>
+        let formulario = document.getElementById("formulario");
+        let respuesta = document.getElementById("respuesta");      
+
+        formulario.addEventListener("click", login);
+
+        async function login(){
+            let usuario = document.getElementById("Usuario").value;
+            let clave = document.getElementById("Clave").value;
+
+            if (usuario == "" || clave == ""){
+                respuesta.innerText = "Complete los datos.";
+                return;
+            } else {
+                respuesta.innerText = "Datos válidos.";
+            }
+            const response = await fetch('https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/api/Propietarios/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ Usuario: usuario, Clave: clave })
+        });
+
+        if (!response.ok){
+            alert("Usuario y/o contraseña incorrecta.");
+            return;
+        }
+
+        const token = await response.text();
+        localStorage.setItem("token", token);
+
+        alert("Login exitoso.")
+        }
+    </script>
+</body>
+</html>
