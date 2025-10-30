@@ -11,7 +11,14 @@
         let mes = prompt("Ingrese un mes: ");
         let año = prompt("Ingrese un año: ");
 
-        let fecha = new Date()
+        //Al crear el objeto Date, si se ingresa un dato inválido como 30/02/2024, automaticamente se corrige a 1/03/2024
+        let fecha = new Date(año, mes-1, dia);
+
+        if(fecha.getFullYear() === anio && fecha.getMonth() === mes - 1 && fecha.getDate() === dia){
+            alert("La fecha es válida: " + fecha.toLocaleDateString());
+        } else {
+            alert("La fecha ingresada es inválida.")
+        }
     </script>
 </body>
 </html>

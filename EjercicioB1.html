@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Verificar numero</h2>
+
+    <form id="formulario" action="">
+        <label for="numero">Ingrese un número (1 - 100):</label>
+        <input type="number" id="numero" name="numero">
+        <button type="button">Verificar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        //Capturo los datos del formulario
+        let formulario = document.getElementById("formulario");
+        let resultado = document.getElementById("resultado");
+
+        formulario.addEventListener("click", verificacion);
+
+        function verificacion(){
+            verificacion
+            let numero = parseInt(document.getElementById("numero").value);
+
+            //Verifico si es un numero entre 1 y 100
+            if(isNaN(numero)){
+                resultado.innerText = "Por favor, ingrese un numero.";
+            } else if (numero >= 1 && numero <= 100){
+                resultado.innerText = "El numero " + numero + " es válido.";
+            } else {
+                resultado.innerText = "El numero debe estar entre 1 y 100."
+            }
+        }
+
+
+    </script>
+</body>
+</html>
