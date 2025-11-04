@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    img{
+        width: 300px;
+        border-radius: 5%;
+    }
+
+    #contenedor{
+        border: dotted white;
+        background-color: antiquewhite;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+    }
+
+    .card{
+        border: solid white;
+        background-color: rgb(247, 201, 146);
+        border-radius: 5%;
+        margin: 10px;
+    }
+</style>
+
+</head>
+<body>
+    <div id="contenedor">
+
+    </div>
+    <script>
+        cargarInmuebles();
+        async function cargarInmuebles(){
+            const elemento = document.getElementById("contenedor");
+            const token = localStorage.getItem("token");
+            const response = await fetch('https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/api/Inmuebles', {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token}
+            });
+
+            if (response.ok){
+                const listaInmuebles = await response.json();
+                let i = 0; //Indice
+                for (x of listaInmuebles) {
+                    //CREO UNA TARJETA
+                    let card = document.createElement("div");
+                    card.classList.add("card");
+
+                    //AGREGO SUS DATOS
+                    card.innerHTML += "<p>ID Inmueble: " + x.idInmueble + "</p>";
+                    card.innerHTML += "<p>Direccion: " + x.direccion + "</p>";
+                    card.innerHTML += "<p>Tipo: " + x.tipo + "</p>";
+                    card.innerHTML += "<p>Superficie: " + x.superficie + "</p>";
+                    card.innerHTML += "<img src='https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/" + x.imagen + "'/>";
+
+                    //INSERTO LA CARTA EN EL CONTENEDOR
+                    elemento.appendChild(card);
+                }
+                };
+            }
+    </script>    
+</body>
+</html>

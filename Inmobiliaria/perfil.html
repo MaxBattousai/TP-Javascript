@@ -22,7 +22,9 @@
 
             if (response.ok){
                 const propietario = await response.json();
-                elemento.innerHTML = "<p>Nombre:" + propietario.nombre + "</p>"
+                elemento.innerHTML += "<p>Nombre:" + propietario.nombre + "</p>"
+                elemento.innerHTML += "<p>Apellido:" + propietario.apellido + "</p>"
+                elemento.innerHTML += "<p>DNI:" + propietario.dni + "</p>"
             }
         }
     </script>
