@@ -6,29 +6,87 @@
     <title>Document</title>
 <style>
     img{
-        width: 300px;
+        height: 50%;
+        width: 90%;
         border-radius: 5%;
+        margin: 0%;
+    }
+    #menu{
+        position: sticky;
+        top: 0;
     }
 
-    #contenedor{
+    #contenedor, #menu{
         border: dotted white;
         background-color: antiquewhite;
         display: flex;
         flex-wrap: wrap;
-        justify-content: end;
+        justify-content: center;
+    }
+    
+    ul{
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        width: 50%;
+        align-items: center;
+    }
+
+    li{
+        border: white solid;
+        border-radius: 20px;
+        background-color: rgb(247, 201, 146);
+        height: 100%;
+
+        padding-right:  10%;
+        padding-left: 10%;
+
+        margin-right: 10%;
+        margin-left: 10%;
+
+        text-align: center;
+    }
+
+    a {
+        text-decoration-line: none;
+    }
+
+    h1{
+        text-align: center;
+        width: 100%;
     }
 
     .card{
+        display: flex;
+        flex-direction: column;
         border: solid white;
         background-color: rgb(247, 201, 146);
         border-radius: 5%;
         margin: 10px;
+        padding: 10px;
+        max-width: 20%;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    p{
+        padding-left: 5%;
     }
 </style>
 
 </head>
 <body>
+    
+    <div id="menu">
+        <h1>Inmobiliaria</h1>
+        <ul>
+            <li><a href="./perfil.html">PERFIL</a></li>
+            <li><a href="./inmuebles.html">INMUEBLES</a></li>
+        </ul>
+    </div>
     <div id="contenedor">
+        
 
     </div>
     <script>
@@ -50,11 +108,11 @@
                     card.classList.add("card");
 
                     //AGREGO SUS DATOS
+                    card.innerHTML += "<img src='https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/" + x.imagen + "'/>";
                     card.innerHTML += "<p>ID Inmueble: " + x.idInmueble + "</p>";
                     card.innerHTML += "<p>Direccion: " + x.direccion + "</p>";
                     card.innerHTML += "<p>Tipo: " + x.tipo + "</p>";
-                    card.innerHTML += "<p>Superficie: " + x.superficie + "</p>";
-                    card.innerHTML += "<img src='https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/" + x.imagen + "'/>";
+                    card.innerHTML += "<p>Superficie: " + x.superficie + "</p>";                 
 
                     //INSERTO LA CARTA EN EL CONTENEDOR
                     elemento.appendChild(card);
